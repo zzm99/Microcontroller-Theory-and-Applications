@@ -1,0 +1,29 @@
+void get_sqrt(){
+	int i = 0;
+	int cur = 17;
+	int jishu = 1;
+	int ans = 0;
+	while(true){
+		i++;
+		cur -= jishu;
+		jishu += 2;
+		if(cur < 0){
+			break;
+		}
+	}
+	ans = i-1;
+}
+
+GETSQRT:
+MOV R1, #17;  cur = 17
+MOV R2, #0;   i = 0
+MOV R3, #1;   jishu = 1
+
+LOOP:
+ADD R2, R2, #1;   i++
+SUB R1, R1, R3;   cur -= jishu
+ADD R3, R3, #2;   jishu += 2
+CMP R1, #0;       
+JAE LOOP;         
+
+SUB ANS, R2, #1;  ans = i-1
